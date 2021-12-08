@@ -13,8 +13,9 @@ def part1(baords, chosen):
                     s = 0
                     for row in board:
                         s += sum([k for k in row if k not in seen])
-                    print(s*number)
+                    print(s * number)
                     return
+
 
 def part2(boards, chosen):
     seen = set()
@@ -38,22 +39,24 @@ def part2(boards, chosen):
                         s = 0
                         for row in boards[wboard]:
                             s += sum([k for k in row if k not in seen])
-                        print(s*number)
+                        print(s * number)
                         return
                     # mark this board has won
                     win[bi] = True
                     break
-if __name__ =='__main__':
-    with open('./input/day4.txt', 'r') as f:
-        chosen = [int(a) for a in f.readline().strip().split(',')]
+
+
+if __name__ == "__main__":
+    with open("./input/day4.txt", "r") as f:
+        chosen = [int(a) for a in f.readline().strip().split(",")]
         boards = []
         board = []
         for line in f.readlines():
-            if line in ['\n', '', '\r']:
+            if line in ["\n", "", "\r"]:
                 continue
 
-            board.append([int(a) for a in line.strip().split(' ') if a != ''])
-            
+            board.append([int(a) for a in line.strip().split(" ") if a != ""])
+
             if len(board) == 5:
                 boards.append(board)
                 board = []

@@ -2,7 +2,9 @@ lut = {2: 1, 4: 4, 3: 7, 7: 8}
 
 
 def part1(lines):
-    c = sum(len([1 for k in l[1].strip().split(" ") if len(k) in lut]) for l in lines)
+    c = sum(
+        len([1 for k in line[1].strip().split(" ") if len(k) in lut]) for line in lines
+    )
     print(c)
 
 
