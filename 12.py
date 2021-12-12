@@ -48,21 +48,21 @@ def part2(lines):
 
     count = 0
 
-    def find(paths, beginning, visited, small_cave):
+    def find(beginning, visited, small_cave):
         nonlocal count
-        for path in paths[beginning]:
-            if path == "end":
+        for p in paths[beginning]:
+            if p == "end":
                 count += 1
-                continue
-            if path.isupper():
-                find(paths, path, copy.copy(visited) + [path], small_cave)
-            elif path.islower():
-                if path not in visited:
-                    find(paths, path, copy.copy(visited) + [path], small_cave)
+            elif p.isupper():
+                find(p, copy.copy(visited) + [p], small_cave)
+            # the letter is lower
+            else:
+                if p not in visited:
+                    find(p, copy.copy(visited) + [p], small_cave)
                 elif small_cave:
-                    find(paths, path, copy.copy(visited) + [path], False)
+                    find(p, copy.copy(visited) + [p], False)
 
-    find(paths, "start", ["start"], True)
+    find("start", ["start"], True)
     print(count)
 
 
